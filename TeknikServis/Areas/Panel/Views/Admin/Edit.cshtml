@@ -1,0 +1,72 @@
+﻿@using TeknikServis.Models
+@model ApplicationUser
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+   <div class="a"></div>
+    <form action="/Panel/Admin/Edit" method="post" onload="yukle()">
+
+
+        <div class="col-md-6">
+            <h2 style="text-align:center">Kullanıcı Düzenleme</h2>
+            <input type="hidden" value="@Model.Id" name="Id" />
+            <div class="form-group">
+                <label> Ad Soyad</label>  <input type="text" name="NameSurname" value="@Model.NameSurname" placeholder="Ad Soyad" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label> Kullanici Adi</label> <input type="text" name="UserName" value="@Model.UserName" placeholder="Kullanici Adi" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label> E- Mail</label><input type="email" name="Email" value="@Model.Email" placeholder="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label> Password</label><input type="password" name="Password" placeholder="Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Password</label><input type="password" name="Password2" placeholder="Confirm Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Address</label><input type="text" name="Address" value="@Model.Address" placeholder="Adress" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label><input type="tel" name="PhoneNumber" value="@Model.PhoneNumber" placeholder="Phone Number" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Roles</label> @Html.DropDownList("role", (IEnumerable<SelectListItem>)ViewBag.Roles, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-success">Güncelle</button> | <a href="/Panel/Admin/Index" class="btn btn-primary">Ana Sayfaya Geri Dön</a>
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(
+            function () {
+                var pass1 = $("input[name=Password]").val();
+                var pass2 = $("input[name=Password2]").val();
+               var  alan=$(".a").html();
+                $("button").submit(
+                    function (e) {
+
+                        if (pass1 !== pass2) {
+                            e.preventDefault();
+                            alan +="<p class='alert alert danger'>Girdiğiniz şifreler birbiriyle uyumsuz</p>"
+                           
+                        }
+                     
+                    }
+
+                );
+               
+            }
+
+        )
+    </script>
+  
+
+}

@@ -1,0 +1,83 @@
+﻿
+@if (ViewBag.Errors != null)
+{
+
+    foreach (var item in ViewBag.Errors)
+    {
+        <p class="alert alert-danger">@item</p>
+
+    }
+}
+        <div class="container" >
+            <div class="col-md-6">
+                <form id="register-form" method="post">
+
+
+                    <div class="form-group">
+                        <input type="text" name="UserName" id="ad" tabindex="1" class="form-control" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="pass" id="sifre" tabindex="2" class="form-control" placeholder="Şifre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" name="pass" id="confirmPassword" tabindex="2" class="form-control" placeholder="Şifre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="NameSurname" tabindex="2" class="form-control" placeholder="Ad Soyad Giriniz " required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="Email" id="email" tabindex="3" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="Address" placeholder="Address" tabindex="4" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="PhoneNumber" placeholder="Telefon Numarası" tabindex="5" class="form-control" required />
+                    </div>
+
+                    <div class="form-group">
+                       @Html.DropDownList("role", (IEnumerable<SelectListItem>)ViewBag.Roles,"Bir Kullanıcı Giriniz Lütfen",new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <button type="submit" id="register" class="btn btn-success btn-lg">Kayıt Ol</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+
+@section scripts{
+    <script>
+
+        function compare(e) {
+            var cpass = $("#confirmPassword").val();
+            var pass = $("#password").val();
+            var hata = $(".hata");
+
+            $("button#register").on("submit", function (e) {
+                if (cpass !== pass) {
+                    hata.removeClass("hidden");
+                    hata.addClass("alert alert-danger");
+                    e.preventDefault();
+
+
+
+                }
+
+
+            })
+        }
+
+    </script>
+
+
+
+}

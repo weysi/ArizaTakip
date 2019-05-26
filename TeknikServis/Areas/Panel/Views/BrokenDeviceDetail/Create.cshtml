@@ -1,0 +1,49 @@
+﻿@using TeknikServis.Models
+@model  BrokenDevice
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Create</h2>
+    <form method="post">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="form-group col-md-6">
+            <input type="text" name="Issues" placeholder="Sorunu Giriniz ... " class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <input type="text" name="Solution" placeholder="Çözümü  Giriniz ..." class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <input type="datetime" name="PickUpDate" placeholder="Tarih Giriniz " class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <input type="datetime" name="EstimatedDate" placeholder="Tarih Giriniz " class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+
+            @Html.DropDownList("WhichStep",
+               EnumHelper.GetSelectList(typeof(WhichStep)),
+
+               new { @class = "form-control" })
+
+        </div>
+        <div class="col-md-6 form-group">
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>
+@section scripts{
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "yy-mm-dd",
+                autoSize: true,
+                changeMonth: true
+
+            });
+        })
+    </script>
+}

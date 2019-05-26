@@ -1,0 +1,78 @@
+﻿@using TeknikServis.Models
+@model LoginViewModel
+@{ Layout = null;}
+
+<!Doctype html>
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+    @Styles.Render("~/Content/css"),
+</head>
+<body>
+    <!------ Include the above in your HEAD tag ---------->
+    <div class="container">
+        @if (ViewBag.Errors != null)
+        {
+
+            foreach (var item in ViewBag.Errors)
+            {
+                <p class="alert alert-danger">@item</p>
+
+            }
+
+        }<div class="error hidden"></div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-login">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <a href="#" class="active" id="login-form-link">GİRİŞ SAYFASI</a>
+                            </div>
+                            
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form id="login-form" method="post" action="/MyAccount/Login" style="display: block;">
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-group">
+                                        <input type="text" name="UserName" id="username" class="form-control" placeholder="Username">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="Password" id="password" class="form-control" placeholder="Password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Giriş Yap">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                                @*@Html.Action("Register","MyAccount")*@
+                           
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/main")
+
+
+</body>
+</html>
+
+

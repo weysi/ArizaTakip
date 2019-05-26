@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>@Html.ValidationSummary()</p>
+<div class="container">
+
+
+    <h2>Ürün Hakkında</h2>
+  
+            <form method="post" action="/Panel/BrokenDevice/Create">
+
+                <input type="hidden" name="UserId" value="@ViewBag.Idsi" />
+                <div class="col-md-8 form-group">
+                    <a href="/Panel/Admin/Index" class="btn btn-primary">Ana Sayfaya Geri Dön</a>
+                </div>
+
+
+                <div class="col-md-8 form-group">
+                    <input type="text" name="ProductName" placeholder="ProductName" class="form-control" />
+
+                </div>
+
+
+
+                <div class="col-md-8 form-group">
+                    <input type="text" name="SerialNo" placeholder="SerialNo" class="form-control" />
+
+                </div>
+
+
+
+                <div class="col-md-8 form-group">
+                    Garanti Durumu  <input type="checkbox" name="isGaranti" value="true" />
+                </div>
+
+                <div class="col-md-12 form-group">
+                    <button type="submit" class="btn btn-success">Ürün Kaydet</button>
+
+                </div>
+            </form>
+
+            <div class="col-md-12">
+                <a href="/Panel/BrokenDeviceDetail/Create?id=@ViewBag.Idsi" class="btn btn-primary"> Ürün Detay Ekle</a>
+            </div>
+    
+
+
+      
+
+
+</div>
+
+

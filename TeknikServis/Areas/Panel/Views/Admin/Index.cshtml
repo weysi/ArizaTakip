@@ -1,0 +1,62 @@
+﻿@using TeknikServis.Models
+@model IEnumerable<ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    tr th, tr td {
+        text-align: center;
+        padding: 15px;
+    }
+
+    .a a {
+        margin: 10px;
+    }
+</style>
+<div class="container">
+    <div class="a">
+        <a href="/Panel/Admin/CreateNew" class="btn btn-success btn-lg">Kullanıcı Ekle</a>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Kullanici Adi</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Son Durum</th>
+                <td>Ürün Düzenleme</td>
+
+            </tr>
+
+        </thead>
+        <tbody>
+
+            @foreach (ApplicationUser item in Model)
+            {
+            <tr>
+                <td>   @item.UserName</td>
+                <td>@item.Address</td>
+                <td>@item.Email</td>
+                <td><a href="/Panel/Situation/Index?id=@item.Id" class="btn btn-primary">Durum Güncelle</a></td>
+
+                <td>
+                    <a href="/Panel/BrokenDevice/Create?id=@item.Id" class="btn btn-warning">Ürün Ekle</a>
+                </td>
+             
+
+
+               
+
+            </tr>
+
+
+
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

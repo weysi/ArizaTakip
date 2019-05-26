@@ -1,0 +1,36 @@
+.one, .two, .three, .four{
+    position:absolute;
+	margin-top:-15px;
+	z-index:1;
+	height:50px;
+	width:50px;
+    border-radius:25px;
+    
+	
+}
+.one{
+	left:15%;
+}
+.two{
+	left:35%;
+}
+.three{
+	left:55%;
+}
+.four{
+left: 80%;
+}
+
+.success-color{
+    border: 2px solid silver;
+    background-color:white;
+    
+}
+
+.no-color{
+	background-color:inherit;
+}
+span#isGaranti{
+    color:black;
+}
+

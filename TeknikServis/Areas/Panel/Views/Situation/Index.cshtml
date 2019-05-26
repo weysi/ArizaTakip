@@ -1,0 +1,52 @@
+﻿@using TeknikServis.Models
+@model ApplicationUser
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <a href="/Panel/Admin/Index" class="btn btn-warning">Ana Sayfaya Dön</a>
+    <div class="jumbotron text-center">
+        <h2>Ürünün Durumunu Güncelle</h2>
+    </div>
+    <form method="post">
+        <input type="hidden" name="Id" value="@Model.BrokenDevice.BrokenDeviceDetail.Id" />
+        <input type="hidden" name="AppId" value="@Model.Id" />
+        <div class="form-group">
+
+            <div class="col-md-3">
+                @Html.DropDownList("WhichStep",
+                           EnumHelper.GetSelectList(typeof(WhichStep)),"Secili Olan ("+Model.BrokenDevice.BrokenDeviceDetail.WhichStep.ToString()+" )",
+
+                           new { @class = " form-control" })
+            </div>
+        </div>
+        <button type="submit">Güncelle</button>
+    </form>
+    <div class="col-md-12">
+        <h2 class="text-center">Ürün Kargolama</h2>
+    </div>
+   
+    <form method="post" action="/Panel/Shipment">
+
+        <input type="hidden" name="Id" value="@Model.BrokenDevice.Id" />
+        <div class="form-group">
+            <input type="text" name="ShipmentType" class="form-control" placeholder="Kargolama Tipi" />
+        </div>
+        <div class="form-group">
+            <input type="datetime" name="ShipmentDate" class="form-control" placeholder="Gönderim Tarihi Giriniz ..." />
+        </div>
+        <div class="form-group">
+            <input type="text" name="ShipmentAdress" class="form-control" placeholder="Gönderilecek Adress"/>
+        </div>
+        <button type="submit">Kaydet</button>
+    </form>
+
+
+</div>
+
+
+
+
+
+-

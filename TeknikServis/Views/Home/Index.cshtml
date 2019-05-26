@@ -1,0 +1,181 @@
+﻿@using TeknikServis.Models;
+@model BrokenDevice
+<div class="container">
+    <div class="row">
+        <br />
+        <div class="col-md-12">
+            <div class="progress">
+                <div class="one success-color">
+                    <i class="fas fa-check ortala"></i>
+                </div>
+                <div class="two success-color">
+                    <i class="fas fa-wrench ortala"></i>
+                </div>
+                <div class="three success-color">
+                    <i class="fas fa-check ortala"></i>
+                </div>
+                <div class="four success-color">
+                    <i class="fas fa-truck ortala"></i>
+                </div>
+                <div class="progress-bar progress-bar-success" style=""></div>
+            </div>
+            <hr />
+
+            <div class="col-md-12 alert alert-success first_info">
+
+                <h2 class="text-center"> Ürün Hakkında</h2>
+                @if (User.Identity.IsAuthenticated)
+                {
+
+
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Müşterinin Adi Soyadi : </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.ApplicationUser.NameSurname</strong> </label> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Tel No : </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.ApplicationUser.PhoneNumber</strong> </label> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Adres :  </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.ApplicationUser.Address</strong> </label> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Ürün Model No : </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.ProductName</strong> </label> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Ürün Seri No : </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.SerialNo</strong> </label> </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Alınış Tarihi : </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.BrokenDeviceDetail.PickUpDate.ToString("dd/MM/yyyy")</strong> </label> </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Veriliş Tarihi :</strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.BrokenDeviceDetail.EstimatedDate.ToString("dd/MM/yyyy") </strong> </label> </div>
+                    </div>
+                    string secilen = "";
+                    if (Model.isGaranti == true)
+                    {
+                        secilen = "checked";
+
+                    }
+
+                    <div class="col-sm-12">
+                        <input type="checkbox" value="" class="size" style="font-size:24px;" disabled="disabled" @secilen /> <label> <strong>Garantisi var mı</strong></label>
+                    </div>
+                }
+
+            </div>
+            @if (Model.BrokenDeviceDetail != null)
+            {
+                <div class="col-md-12 alert alert-info second_info">
+                    <h2 class="text-center">Ürün Son Durum</h2>
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;">  <strong>Sorunu : </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.BrokenDeviceDetail.Issues </strong> </label> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Çözümü</strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.BrokenDeviceDetail.Solution </strong> </label> </div>
+                    </div>
+
+
+
+                </div>
+            }
+            <div class="col-md-12 alert alert-info second_info">
+                <h2 class="text-center">Ürün Son Durum</h2>
+                <div class="row">
+                    <div class="col-sm-3"><label class="form-control" style="font-size:15px;">  <strong>Sorunu : </strong>  </label></div>
+                    <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.BrokenDeviceDetail.Issues </strong> </label> </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Çözümü</strong>  </label></div>
+                    <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.BrokenDeviceDetail.Solution </strong> </label> </div>
+                </div>
+
+
+
+            </div>
+            @if (Model.Shipment != null)
+            {
+                <div class="col-md-12 alert alert-success">
+                    <h2 class="text-center">Ürün Kargolama</h2>
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Kargo Tipi </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.Shipment.ShipmentType </strong> </label> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Kargo Gönderim Tarihi :  </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.Shipment.ShipmentDate.Value.ToString("dd/MM/yyyy") </strong> </label> </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3"><label class="form-control" style="font-size:15px;"><strong>Kargolanan Adres :  </strong>  </label></div>
+                        <div class="col-sm-9"><label class="form-control text-center" style="font-size:15px;"><strong>@Model.Shipment.ShipmentAdress </strong> </label> </div>
+                    </div>
+
+
+                </div>
+            }
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            dateFormat: "yy-mm-dd",
+            autoSize: true,
+            changeMonth: true
+
+        }
+
+
+
+        );
+    })
+
+
+    $(document).ready(
+
+        function () {
+
+        switch ("@ViewBag.Process") {
+            case "Alındı":
+                $(".progress-bar").css("width", "20%");
+                break;
+            case  "Teshis":
+                $(".progress-bar").css("width", "45%");
+                break;
+            case  "Tedarik":
+                $(".progress-bar").css("width", "65%");
+                break;
+            case  "Onarım":
+                $(".progress-bar").css("width", "85%");
+                break;
+
+            case  "Kargolama":
+                $(".progress-bar").css("width", "100%");
+                break;
+
+
+
+            default:
+        }
+
+
+    })
+
+</script>

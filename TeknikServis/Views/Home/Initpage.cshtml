@@ -1,0 +1,42 @@
+﻿@using TeknikServis.Models
+@model BrokenDevice
+@{
+    ViewBag.Title = "Initpage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .container img{
+        border-radius:50%;
+    }
+    ul li {
+       font-size:18px;
+    }
+</style>
+
+<div class="container">
+    <div class="col-md-12 text-center" style="">
+        <img src="https://picsum.photos/200" alt="Avatar" style="width:200px">
+    </div>
+    <div>
+        <label class="text-left" style="font-size:18px;"> Hoş Geldiniz <i><strong>@User.Identity.Name</strong></i></label>
+        <div class="jumbotron">
+            <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed risus bibendum, commodo dolor et, congue ex. Nulla nec nisl ac purus egestas tincidunt in eu arcu. In felis lectus, ornare quis lobortis sed, tristique ut eros. Morbi vel libero ut urna tincidunt lacinia. Aenean sagittis risus arcu, ac finibus sem rutrum nec. Vestibulum tempus nisi metus, mattis condimentum tortor viverra quis.</li>
+                <li>
+                    Nunc sed dignissim dolor, nec varius neque. Aenean aliquet, metus a laoreet interdum, velit risus varius lacus, a semper tortor arcu vitae nisl. Praesent eu sem vitae metus mattis suscipit finibus et nisl. Suspendisse volutpat leo ac purus iaculis aliquam. Maecenas et cursus urna. Donec ut risus sit amet neque ultrices ornare.
+                </li>
+              
+            </ul>
+
+
+
+        </div>
+        @if (User.IsInRole("User"))
+        {
+            <div class="col-md-12">
+                <a href="/Home/Index" class="btn btn-success  btn-lg">Servis Sayfasına Yönlendirilirsiniz... </a>
+            </div>
+        }
+
+    </div>
+</div>
